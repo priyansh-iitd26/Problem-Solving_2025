@@ -1,4 +1,7 @@
 // Problem Link : https://codeforces.com/contest/1919/problem/C
+// Greedy Approach
+// Editorial : https://codeforces.com/blog/entry/124220
+
 void solve(){
     int n;
     cin >> n;
