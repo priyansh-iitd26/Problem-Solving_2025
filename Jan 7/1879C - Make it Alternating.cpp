@@ -1,14 +1,16 @@
 // Problem Link : https://codeforces.com/contest/1879/problem/C
 // Code (with Approach) : 
-void solve(){
+const int N = 2e5 + 1;
+vector<int> fact(N);
 
-    int N = 2e5 + 1;
-    vector<int> fact(N);
+void computeFactorial(){
     fact[0] = fact[1] = 1;
     for(int i = 2; i < N; i++){
-        fact[i] = (i * fact[i-1]) % MOD;
+        fact[i] = (i * fact[i - 1]) % MOD;
     }
+}
 
+void solve(){
     string s;
     cin >> s;
 
@@ -50,6 +52,8 @@ void solve(){
 signed main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+
+    computeFactorial(); //pre-compute factorials
 
     int tc;
     cin >> tc;
