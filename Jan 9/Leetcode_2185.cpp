@@ -118,7 +118,7 @@ public:
 //TC: O(n * (len + m))
 //SC: O(n * len)
 // Note : This solution creates a new Trie for every word in the words[] array, leading to redundant Trie construction and checks. 
-// A more efficient solution would involve inserting all words (of words[]) into a single Trie and then performing the prefix check, reducing both time and space complexity significantly.
+// A more efficient solution would involve inserting all words (of words[]) into a single Trie and then performing the prefix check.
 
 // Approach - 3 : Optimized Trie Implementation
 // Note that the TrieNode* implementation is different from above
