@@ -1,0 +1,5 @@
+---- When dealing with balanced parentheses problems, always think of using a stack. Stacks are perfect for matching opening and closing parentheses 
+     and ensuring the sequence is valid.
+---- Additionally, remember that a two-way pass approach (left-to-right and right-to-left) is often useful in parentheses-related problems. 
+     It helps validate both prefixes and suffixes, ensuring global balance. This is especially helpful in problems with flexibility, like when certain 
+     characters can be treated as either ( or ).
