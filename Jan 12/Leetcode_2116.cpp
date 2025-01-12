@@ -38,7 +38,7 @@ s[i] is either '(' or ')'.
 locked[i] is either '0' or '1'.
 */
 
-// Approach 1 Code :
+// Approach 1 Code (Using 2 Stacks - O(n) space):
 class Solution {
 public:
     bool canBeValid(string s, string locked) {
@@ -79,4 +79,45 @@ public:
     }
 };
 
-//Approach - 2 Code :
+//Approach - 2 Code (Using constant space O(1)):
+class Solution {
+public:
+    bool canBeValid(string s, string locked) {
+        int n = s.length();
+
+        if(n % 2 == 1)
+            return false;
+        
+        //L to R
+        int openBracketCount = 0;
+        for(int i = 0; i < n; i++){
+            if(s[i] == '(' || locked[i] == '0'){
+                openBracketCount++;
+            }
+            else{
+                openBracketCount--;
+            }
+
+            if(openBracketCount < 0){
+                return false;
+            }
+        }
+
+        //R to L
+        int closedBracketCount = 0;
+        for(int i = n - 1; i >= 0; i--){
+            if(s[i] == ')' || locked[i] == '0'){
+                closedBracketCount++;
+            }
+            else{
+                closedBracketCount--;
+            }
+
+            if(closedBracketCount < 0){
+                return false;
+            }
+        }
+
+        return true;
+    }
+};
