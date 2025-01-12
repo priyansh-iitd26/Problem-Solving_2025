@@ -1,5 +1,11 @@
 ---- When dealing with balanced parentheses problems, always think of using a stack. Stacks are perfect for matching opening and closing parentheses 
      and ensuring the sequence is valid.
+
 ---- Additionally, remember that a two-way pass approach (left-to-right and right-to-left) is often useful in parentheses-related problems. 
      It helps validate both prefixes and suffixes, ensuring global balance. This is especially helpful in problems with flexibility, like when certain 
      characters can be treated as either ( or ).
+
+HELPFUL in all problems which involve grids
+---- Whenever you need to move right or down in a grid, the first thing that should come in your mind is DP. 
+     DP comes in very handy in those type of problems in which there is a grid and you need to maximize or minimize some score and the directions allowed to go 
+     are only right or down.
