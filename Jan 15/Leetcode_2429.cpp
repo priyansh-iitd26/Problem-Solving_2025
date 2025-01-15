@@ -89,13 +89,15 @@ public:
 
         int requiredSetBitCount = __builtin_popcount(num2); //O(log(n))
 
+        //start from most significant position and where num1 has set bit, set the corresponding bit in x as well (for minimum XOR)
         for(int bit = 31; bit >= 0 && requiredSetBitCount > 0; bit--){
             if(isSet(num1, bit)){
                 setBit(x, bit);
                 requiredSetBitCount--;
             }
         }
-
+        //if requiredSetBitCount is still non-zero
+        //start from least significant bit position and where num1 has unset bit, set the corresponding bit in x
         for(int bit = 0; bit < 32 && requiredSetBitCount > 0; bit++){
             if(!isSet(num1, bit)){
                 setBit(x, bit);
