@@ -78,3 +78,25 @@ public:
 };
 //T.C : O(n)
 //S.C : O(n)
+
+// Approach - 2 (linear time but constant space)
+// Each element of original[] is used twice to construct the entire derived array.
+// If original[] = [a, b, c], then derived[] = [a^b, b^c, c^a]
+// So, on taking XOR of all elements in derived, we should get XOR = 0
+// If not, then such a derived[] array is not possible
+// Another example, if original[] = [a, b, c, d] => derived[] = [a^b, b^c, c^d, d^a]
+class Solution {
+public:
+    bool doesValidArrayExist(vector<int>& derived) {
+        int n = derived.size();
+        int xorr = 0;
+
+        for(int i = 0; i < n; i++){
+            xorr ^= derived[i];
+        }
+
+        return xorr == 0;
+    }
+};
+//T.C : O(n)
+//S.C : O(1)
