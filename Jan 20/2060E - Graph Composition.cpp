@@ -13,8 +13,6 @@ using namespace std;
 #define ld long double
 #define MOD 1000000007
 
-/*-----------------------------------------------------------------------------------------*/
-//DSU
 class DSU {
     vector<int> rank, parent, size;
 public:
@@ -54,7 +52,7 @@ public:
         return u == v;
     }
 };
-//number of connected components - UNDIRECTED graph - DFS
+
 void dfs(int node, vector<vector<int>>& adj, vector<bool>& vis) {
     vis[node] = true;
     for (int neighbor : adj[node]) {
@@ -115,15 +113,17 @@ void solve(){
             F.unionBySize(u, v);
         }
         else{
-            gr_f.erase(remove(gr_f.begin(), gr_f.end(), p), gr_f.end());
             ans++;
         }
     }
+    //way to find number of connected components using DSU 
+    set<int> st1, st2;
+    for(int i = 0; i < n; i++){
+        st1.insert(F.UPar(i));
+        st2.insert(G.UPar(i));
+    }
 
-    int cc1 = countConnectedComponents(n, gr_f);
-    int cc2 = countConnectedComponents(n, gr_g);
-
-    if(cc1 > cc2) cout << ans + cc1 - cc2;
+    if(st1.size() > st2.size()) cout << ans + st1.size() - st2.size();
     else cout << ans;
 
     cout << "\n";
