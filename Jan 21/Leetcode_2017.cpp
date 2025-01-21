@@ -27,3 +27,28 @@ public:
         return minimizedRobot2Sum;
     }
 };
+
+//Another way to implement above
+class Solution {
+public:
+    long long gridGame(vector<vector<int>>& grid) {
+        int n = grid[0].size();
+
+        long long firstRowSum = accumulate(grid[0].begin(), grid[0].end(), 0LL);
+
+        long long option1 = firstRowSum; //points available for Robot2 on row = 0
+        long long option2 = 0; //points available for Robot2 on row = 1
+
+        long long mini = LLONG_MAX; //Robot1 optimal strategy
+
+        for(int i = 0; i < n; i++){
+            option1 -= grid[0][i];
+            long long robot2Best = max(option1, option2);
+            mini = min(mini, robot2Best);
+            option2 += grid[1][i];    
+        }
+
+        return mini;
+
+    }
+};
