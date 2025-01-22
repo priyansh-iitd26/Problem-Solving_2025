@@ -2,7 +2,54 @@
 // Same problem : https://leetcode.com/problems/01-matrix/
 
 // Revised Multi-Source BFS from MIK's video
+// Solution Code :
+class Solution {
+public:
+    vector<vector<int>> directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 
+    vector<vector<int>> highestPeak(vector<vector<int>>& isWater) {
+        int m = isWater.size();
+        int n = isWater[0].size();
+        
+        vector<vector<int>> ans(m, vector<int>(n, -1));
+        
+        queue<pair<int, int>> q; //{i, j}
+
+        //put all water cells in the queue - these are source(s) for hitting BFS
+        for(int i = 0; i < m; i++){
+            for(int j = 0; j < n; j++){
+                if(isWater[i][j] == 1){
+                    ans[i][j] = 0;
+                    q.push({i, j});
+                }
+            }
+        }
+
+        //apply multisource BFS to propagate from water cells
+        while(!q.empty()){
+            int size = q.size();
+
+            while(size--){
+                int curr_i = q.front().first;
+                int curr_j = q.front().second;
+                q.pop();
+
+                for(vector<int>& dir : directions){
+                    int new_i = curr_i + dir[0];
+                    int new_j = curr_j + dir[1];
+
+                    if(new_i >= 0 && new_i < m && new_j >= 0 && new_j < n && ans[new_i][new_j] == -1){
+                        ans[new_i][new_j] = 1 + ans[curr_i][curr_j];
+                        q.push({new_i, new_j});
+                    }
+                }
+            }
+        }
+
+        return ans;
+    }
+};
+// another way to implement - similar idea
 class Solution {
 public:
     vector<vector<int>> directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
