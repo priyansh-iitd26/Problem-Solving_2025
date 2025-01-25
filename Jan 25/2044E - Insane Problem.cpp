@@ -28,7 +28,7 @@ void solve(){
         int L = max(l1, (l2 + p - 1) / p); //lower bound for intersection
         int R = min(r1, r2 / p); //upper bound for intersection
         
-        if((R - L + 1) > 0){ //or you could write ans = max(R-L+1, 0LL) directly instead of this if-else
+        if((R - L + 1) > 0){ //or you could write ans += max(R-L+1, 0LL) directly instead of this if-else
             ans += (R - L + 1);
         }
 
