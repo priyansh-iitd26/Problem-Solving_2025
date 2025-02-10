@@ -17,7 +17,7 @@ void solve(){
     for(int i = 0; i < n; i++) cin >> a[i];
     for(int i = 0; i < m; i++) cin >> b[i];
 
-    int b_num = b.front();
+    int b_num = b.front(); //in subtask C1, m = 1, so b_num = b[0]
     int prev = min(a.front(), b_num - a.front());
 
     for(int i = 1; i < n; i++){
